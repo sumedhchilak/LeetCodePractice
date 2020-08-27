@@ -1,3 +1,4 @@
+
 // Question 1:
 // Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 // You may assume that each input would have exactly one solution, and you may not use the same element twice.
@@ -74,4 +75,126 @@
 //         map.put(s.charAt(j), j + 1);
 //     }
 //     return ans;
+
+
+// Question 4: Write a function that reverses a string. The input string is given as an array of characters char[].
+// Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+// Solution: Swapping elements in array recursive solution:
+
+// public void reverseString(char[] s) {
+//     helper(s, 0, s.length - 1);
+//  }
+ 
+//  private void helper(char[]s, int left, int right){
+//      if(left >= right){
+//          return;
+//      }
+//      char temp = s[left];
+//      s[left] = s[right];
+//      left++;
+//      s[right] = temp;
+//      right--;
+//      helper(s, left, right);
+//  }
+
+
+// Question 5: Maximum Depth of Binary Tree
+/*
+Given a binary tree, find its maximum depth.
+
+The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+Note: A leaf is a node with no children.
+*/
+
+/*
+Solution: 
+public int maxDepth(TreeNode root) {
+        if(root==null){
+            return 0;
+        }
+        
+        return Math.max(maxDepth(root.left),maxDepth(root.right))+1;
+    }
+*/
+/*
+
+
+
+Question 6:
+Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+Note:Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+
+Solution: Simple Math
+
+ public int singleNumber(int[] nums) {
+        int sumOfSet = 0;
+        int sumOfNums = 0;
+        Set<Integer> set = new HashSet<>();
+        for(int num: nums){
+            if(!set.contains(num)){
+                set.add(num);
+                sumOfSet += num;
+            }
+            sumOfNums += num;
+        }
+        return 2*sumOfSet - sumOfNums;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+
+
 }
