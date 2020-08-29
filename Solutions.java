@@ -146,6 +146,226 @@ Solution: Simple Math
 
 
 
+    Question 7: Merge Two Binary Trees:
+
+    Solution:
+public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
+        if(t1 == null){
+            return t2;
+        }
+        if(t2 == null){
+            return t1;
+        }
+        t1.val += t2.val;
+        t1.left = mergeTrees(t1.left, t2.left);
+        t1.right = mergeTrees(t1.right, t2.right);
+        return t1;
+    }
+
+
+
+    Question 8:
+         public int[] runningSum(int[] nums) {
+        for(int i = 0; i < nums.length - 1; i++){
+            nums[i+1] += nums[i];
+        }
+        return nums;
+    }
+
+
+
+
+    Question 9: Array Shuffle
+
+        public int[] shuffle(int[] nums, int n) {
+        int[] result = new int[nums.length];
+        int index = n;
+        int other = 0;
+        for(int i = 0; i < result.length/2; i++){
+            result[other] = nums[i];
+            other++;
+            result[other] = nums[index];
+            other++;
+            index++;
+        }
+        return result;
+    }
+
+    Question 10: Kids with Greatest Number of Candies
+
+        public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+        ArrayList<Boolean> result = new ArrayList<>();
+        int max = 0;
+        for(int i = 0; i < candies.length; i++){
+            if(candies[i] > max){
+                max = candies[i];
+            }
+        }
+        for(int i = 0; i < candies.length; i++){
+            if(candies[i] + extraCandies >= max){
+                result.add(true);
+            } else{
+                result.add(false);
+            }
+        }
+        return result;
+    }
+
+
+
+    Question 11:
+public String defangIPaddr(String address) {
+        String replaced = address.replace(".","[.]");
+        return replaced;
+    }
+
+
+    Question 12:
+    public int numIdenticalPairs(int[] nums) {
+        int count = 0;
+        for(int i = 0; i < nums.length; i++){
+            for(int j = i + 1; j < nums.length; j++){
+                if(nums[i] == nums[j]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+
+    Question 13:
+    public int numJewelsInStones(String J, String S) {
+    int count=0;
+    for(int i=0;i<J.length();i++)
+    {
+        for(int j=0;j<S.length();j++)
+        {
+            if(J.charAt(i)==S.charAt(j))
+            {
+                count++;
+            }
+        } 
+    }
+    return count;
+    }
+
+
+    Q:14
+
+    public int numberOfSteps (int num) {
+        int count = 0;
+        while(num > 0){
+            if(num % 2 == 0){
+                num /= 2;
+            } else{
+                num--;
+            }
+            count++;
+        }
+        return count;
+    }
+
+    Q:15
+
+     public String restoreString(String s, int[] indices) {
+        TreeMap<Integer, String> map = new TreeMap<>();
+        for(int i = 0; i < indices.length; i++){
+            map.put(indices[i], s.charAt(i)+"");
+        }
+        StringBuilder sb = new StringBuilder();
+        for(Map.Entry<Integer, String> entry: map.entrySet()){
+            sb.append(entry.getValue());
+        }
+        return sb.toString();
+    }
+
+
+    Q: 16
+
+     public int[] smallerNumbersThanCurrent(int[] nums) {
+        int[] result = new int[nums.length];
+        int resultIndex = 0;
+        for(int i = 0; i < nums.length; i++){
+            for(int j = 0; j < nums.length; j++){
+                if(i != j){
+                    if(nums[i] > nums[j]){
+                        result[resultIndex]++;
+                    }
+                }
+            }
+            resultIndex++;
+        }
+        return result;
+    }
+
+    Q: 17
+
+    public int subtractProductAndSum(int n) {
+        int product = 1;
+        int sum = 0;
+        while(n > 0){
+            product *= n%10;
+            sum += n%10;
+            n /= 10;
+        }
+        return product - sum;
+    }
+
+
+    Q:18
+
+     public int[] decompressRLElist(int[] nums) {
+        List<Integer> result = new ArrayList<>();
+        for(int i = 0; i < nums.length - 1; i+=2){
+            int frequency = nums[i];
+            int value = nums[i + 1];
+            for(int j = 0; j < frequency; j++){
+                result.add(value);
+            }
+        }
+        int[] newArray = new int[result.size()];
+        for(int i = 0; i < result.size(); i++){
+            newArray[i] = result.get(i);
+        }
+        return newArray;
+    }
+
+    Q 19 
+
+     public int xorOperation(int n, int start) {
+        int[] nums = new int[n];
+        int sum = start;
+        for(int i = 0; i < nums.length; i++){
+            nums[i] = start + 2*i;
+        }
+        for(int i = 1; i < nums.length; i++){
+            sum = sum ^ nums[i]; 
+        }
+        return sum;
+    }
+
+
+    Q:20
+
+    public int maxArea(int[] height) {
+        int area = 0;
+        int max = 0;
+        for(int i = 0; i < height.length; i++){
+            for(int j = i + 1; j < height.length; j++){
+                area = Math.min(height[i], height[j]) * (j - i);
+                if(area > max){
+                    max = area;
+                }
+            }
+        }
+        return max;
+    }
+
+
+
+
+
 
 
 
